@@ -1,0 +1,90 @@
+<mvc:View controllerName="travelfs.controller.View1"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Page id="_IDGenPage1"
+		title="Travels"
+		class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer"
+		showNavButton="true" >
+		<content>
+			<Table id="TravelsTable"
+                inset="false"
+                mode="MultiSelect"
+                items="{
+                    path: '/Travel',
+                    sorter: {
+                        path: 'BeginDate',
+                        descending : true
+                    }
+                }">
+                <columns>
+                    <Column id="_IDGenColumnTravelID"
+                        width="12em">
+                        <Text id="_IDGenText" text="Travel ID" />
+                    </Column>
+                    <Column id="_IDGenColumnCustomerID">
+                        <Text id="_IDGenTextCustomerID" text="Customer ID" />
+                    </Column>
+                    <Column id="_IDGenColumnCustomerName"
+                        width="12em">
+                        <Text id="_IDGenTextCustomerName" text="Customer Name" />
+                    </Column>
+                    <Column id="_IDGenColumnCustomerEmail"
+                        width="12em">
+                        <Text id="_IDGenTextCustomerEmail" text="Customer Email" />
+                    </Column>
+                    <Column id="_IDGenColumnBeginDate">
+                        <Text id="_IDGenTextBeginDate" text="Begin Date" />
+                    </Column>
+                    <Column id="_IDGenColumnEndDate">
+                        <Text id="_IDGenTextEndDate" text="End Date" />
+                    </Column>
+                    <Column id="_IDGenColumnTotalPrice">
+                        <Text id="_IDGenTextTotalPrice" text="Total Price" />
+                    </Column>
+                    <Column id="_IDGenColumnBookingFee">
+                        <Text id="_IDGenTextBookingFee" text="Booking Fee" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem" vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier id="_IDGenObjectIdentifierCustomerID"
+                                title="{Description}"
+                                text="{TravelID}"/>
+                            <Text id="_IDCustomerID" text="{CustomerID}" />
+                            <Text id="_IDCustomerName" text="{CustomerFirstName} {CustomerLastName}" />
+                            <Text id="_IDCustomerEmail" text="{CustomerEmail}" />
+                            <Text id="_IDBeginDate" text="{BeginDate}" />
+                            <Text id="_IDEndDate" text="{EndDate}" />
+                            <ObjectNumber id="_IDGenObjectNumberTotalPrice"
+                                number="{
+                                    parts:[{path:'TotalPrice'},{path:'CurrencyCode'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {showMeasure: false}
+                                }"
+                                unit="{CurrencyCode}" />
+                            <ObjectNumber id="_IDGenObjectNumberBookingFee"
+                                number="{
+                                    parts:[{path:'BookingFee'},{path:'CurrencyCode'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: {showMeasure: false}
+                                }"
+                                unit="{CurrencyCode}" />    
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+		</content>
+		<footer>
+			<OverflowToolbar id="_IDGenOverflowToolbarFooter">
+				<ToolbarSpacer id="_IDGenToolbarSpacer"/>
+				<Button id="_IDGenButtonAI" text="AI Assistant" type="Emphasized" icon="sap-icon://ai" press=".onToggleChat" />
+                <Button id="_IDGenButtonAccept" text="Accept" type="Accept" />
+				<Button id="_IDGenButtonReject" text="Reject" type="Reject" />
+				<Button id="_IDGenButtonEdit" text="Edit"/>
+				<Button id="_IDGenButtonDelete" text="Delete" />
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
